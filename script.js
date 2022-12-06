@@ -18,9 +18,16 @@ setInterval(function(){
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(500-characterTop);
     if((characterTop>480)||((blockLeft<20)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+130)))){
-        alert("Game over. Score: "+(counter-1));
-        character.style.top = 100 + "px";
-        counter=0;
+        if (counter>=12) {
+            alert("A játéknak vége. Mivel teljesítetted a követelményt, jutalomban részesülsz! A pontszámod:"+counter+" A kódod: GLHF12");
+            counter=0;
+            
+        }
+        else{
+            alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 12");
+            character.style.top = 100 + "px";
+            counter=0;
+        }
     }
 },10);
 
