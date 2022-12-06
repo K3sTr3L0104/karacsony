@@ -1,27 +1,52 @@
-var block = document.getElementById("block");
-var hole = document.getElementById("hole");
+const height = 500;
+var block = document.getElementById("block_0");
+var block_1 = document.getElementById("block_1");
+/*var hole = document.getElementById("hole");*/
 var character = document.getElementById("character");
 var jumping = 0;
 var counter = 0;
 
-hole.addEventListener('animationiteration', () => {
-    var random = -((Math.random()*300)+150);
-    hole.style.top = random + "px";
+function randomNumber() {
+    return ((Math.random()*200)+150);
+}
+
+block.style.height = "100px";
+block_1.style.top = "130px";
+
+block.addEventListener('animationiteration', () => {
+    var random = ((Math.random()*200)+150);
+    block.style.height = random + "px";
+    block_1.style.top = "130px";
     counter++;
 });
+
 setInterval(function(){
+    /* karakter magassága 0->fel (le) */
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     if(jumping==0){
         character.style.top = (characterTop+2)+"px";
     }
+    var cTop = (500-characterTop);
+    
+    var boundingBox = {
+        top: 500-parseInt(window.getComputedStyle(block).getPropertyValue("height")),
+        bottom: 500-parseInt(window.getComputedStyle(block_1).getPropertyValue("top")),
+        left: parseInt(window.getComputedStyle(block).getPropertyValue("left"))
+    }
+    console.log(boundingBox.top);
+    if (((boundingBox.top < cTop) || (parseInt(boundingBox.top)+130 < cTop)) && ((boundingBox.left<20) && (boundingBox.left>-50))) {
+        alert("ütközés teso");
+    }
+    /*
     var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
-    var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
+    var holeTop = parseInt(window.getComputedStyle(block_1).getPropertyValue("top"));
     var cTop = -(500-characterTop);
+    */
+    /*
     if((characterTop>480)||((blockLeft<20)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+130)))){
         if (counter>=12) {
             alert("A játéknak vége. Mivel teljesítetted a követelményt, jutalomban részesülsz! A pontszámod:"+counter+" A kódod: GLHF12");
             counter=0;
-            
         }
         else{
             alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 12");
@@ -29,6 +54,7 @@ setInterval(function(){
             counter=0;
         }
     }
+    */
 },10);
 
 function jump(){
