@@ -40,7 +40,7 @@ setInterval(function(){
             counter=0;
         }
         else{
-            alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 7");
+            alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 20");
             character.style.top = 250 + "px";
             counter=0;
         }
