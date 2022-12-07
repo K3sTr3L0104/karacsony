@@ -35,12 +35,12 @@ setInterval(function(){
     }
     console.log(boundingBox.top);
     if ((cTop < 50) || ((cTop >= boundingBox.top || cTop <= (boundingBox.top-parseInt(block_1.style.top))+50) && (boundingBox.left<20)&&(boundingBox.left>-50))) {
-        if (counter>=12) {
+        if (counter>=7) {
             alert("A játéknak vége. Mivel teljesítetted a követelményt, jutalomban részesülsz! A pontszámod:"+counter+" A kódod: GLHF12");
             counter=0;
         }
         else{
-            alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 12");
+            alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 7");
             character.style.top = 250 + "px";
             counter=0;
         }
