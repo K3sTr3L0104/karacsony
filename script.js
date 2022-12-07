@@ -34,8 +34,16 @@ setInterval(function(){
         left: parseInt(window.getComputedStyle(block).getPropertyValue("left"))
     }
     console.log(boundingBox.top);
-    if (((boundingBox.top < cTop) || (parseInt(boundingBox.top)+130 < cTop)) && ((boundingBox.left<20) && (boundingBox.left>-50))) {
-        alert("ütközés teso");
+    if ((cTop < 50) || ((cTop >= boundingBox.top || cTop <= (boundingBox.top-parseInt(block_1.style.top))+50) && (boundingBox.left<20)&&(boundingBox.left>-50))) {
+        if (counter>=12) {
+            alert("A játéknak vége. Mivel teljesítetted a követelményt, jutalomban részesülsz! A pontszámod:"+counter+" A kódod: GLHF12");
+            counter=0;
+        }
+        else{
+            alert("A játéknak vége. Nem teljesítetted a megfelelő pontszámot. A pontszámod: "+counter+" A követelmény: 12");
+            character.style.top = 250 + "px";
+            counter=0;
+        }
     }
     /*
     var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
@@ -63,7 +71,7 @@ function jump(){
     var jumpInterval = setInterval(function(){
         var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
         if((characterTop>6)&&(jumpCount<15)){
-            character.style.top = (characterTop-5)+"px";
+            character.style.top = (characterTop-4)+"px";
         }
         if(jumpCount>20){
             clearInterval(jumpInterval);
