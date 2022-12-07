@@ -7,16 +7,16 @@ var jumping = 0;
 var counter = 0;
 
 function randomNumber() {
-    return ((Math.random()*200)+150);
+    return ((Math.random()*100)+150);
 }
 
 block.style.height = "100px";
-block_1.style.top = "130px";
+block_1.style.top = "180px";
 
 block.addEventListener('animationiteration', () => {
-    var random = ((Math.random()*200)+150);
+    var random = randomNumber();
     block.style.height = random + "px";
-    block_1.style.top = "130px";
+    block_1.style.top = "180px";
     counter++;
 });
 
@@ -35,7 +35,7 @@ setInterval(function(){
     }
     console.log(boundingBox.top);
     if ((cTop < 50) || ((cTop >= boundingBox.top || cTop <= (boundingBox.top-parseInt(block_1.style.top))+50) && (boundingBox.left<20)&&(boundingBox.left>-50))) {
-        if (counter>=7) {
+        if (counter>=20) {
             alert("A játéknak vége. Mivel teljesítetted a követelményt, jutalomban részesülsz! A pontszámod:"+counter+" A kódod: GLHF12");
             counter=0;
         }
