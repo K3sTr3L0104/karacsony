@@ -49,3 +49,10 @@
     background-image: url('miki.jpg');
     background-repeat: no-repeat;
 }
+@media only screen and (min-width: 768px)
+{
+    #game
+    {
+        width: 100%;
+    }
+}
